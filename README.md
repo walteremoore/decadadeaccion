@@ -9,11 +9,11 @@ _Blog interactivo enfocado en la propuesta de la ONU, desarrollado en el Informa
 
 ## Autores ✒️
 
-_ Equipo Docente _
+_Equipo Docente_
 
-* **Ibañez Lucas** - *Profesor* - (lucas.sebib@gmail.com)
+* **Ibañez Lucas** - *Profesor* - [lucasibaniez](https://github.com/lucasibaniez)
 
-_ Grupo 11 (Año 2021 - Comisión 4) _
+_Grupo 11 (Año 2021 - Comisión 4)_
 
 * **Ceriani, Ludmila** - *Desarrolladora* - [Ludceriani](https://github.com/Ludceriani)
 * **Olivar, Cesar Esteban** - *Desarrollador* - (esteban.rcia@gmail.com)

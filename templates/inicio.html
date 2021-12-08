@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Década de Acción - Blog</title>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Cerrar sesión</a>    
+            {% else %}    
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+        {% endif %}
+        
+        {% if user.is_authenticated %}
+            <h1>Hola {{user.get_full_name}}!</h1>
+            <h2>Soy una pagina de inicio</h2>
+            <ul>
+                {% for p in articulos %}
+                    <li> {{p.titulo}} - ${{p.contenido}} </li>
+                {% endfor %}
+            </ul>
+            {% else %}    
+                <h2>Bienvenidos a Década de Acción</h2>
+        {% endif %}
+    </body>
+</html>
