@@ -8,9 +8,13 @@ _Blog interactivo enfocado en la propuesta de la ONU, desarrollado en el Informa
 * [Bootstrap](https://getbootstrap.com/) - Frontend: HTML, CSS, JS.
 
 ## Autores ✒️
+
 _ Equipo Docente _
+
 * **Ibañez Lucas** - *Profesor* - (lucas.sebib@gmail.com)
+
 _ Grupo 11 (Año 2021 - Comisión 4) _
+
 * **Ceriani, Ludmila** - *Desarrolladora* - [Ludceriani](https://github.com/Ludceriani)
 * **Olivar, Cesar Esteban** - *Desarrollador* - (esteban.rcia@gmail.com)
 * **Schneider, Mara** - *Desarrolladora* - [meltingmushroom](https://github.com/meltingmushroom)
