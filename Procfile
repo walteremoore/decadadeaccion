@@ -1,0 +1,1 @@
+web: gunicorn decadadeaccion.wsgi --log-file -

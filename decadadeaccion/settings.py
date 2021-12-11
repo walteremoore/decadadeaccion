@@ -2,6 +2,8 @@ import pymysql
 import os
 from pathlib import Path
 from django.urls import reverse_lazy
+import dj_database_url
+from decouple import config
 
 pymysql.install_as_MySQLdb()
 
@@ -19,7 +21,7 @@ SECRET_KEY = 'django-insecure-xd3gl(zxlj5qct3h%=7g#c!@mpxaazb$w0ikxwsz_!+5(%i6ru
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # LOGIN 
 LOGIN_REDIRECT_URL = reverse_lazy("inicio")
@@ -47,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'decadadeaccion.urls'
@@ -74,15 +77,18 @@ WSGI_APPLICATION = 'decadadeaccion.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    ),
+    'default1': {
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': "d2vmb0pgh3bj6u",
         "USER": "uqbpjflyeqrlzr",
         "PASSWORD": "89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742",
         "HOST": "ec2-54-225-203-79.compute-1.amazonaws.com",
         "PORT": "5432"
     },
-    'default1': {
+    'default2': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "decadadeaccion",
         "USER": "root",
@@ -127,11 +133,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     )
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
