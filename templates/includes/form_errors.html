@@ -1,4 +1,9 @@
 {% if form.errors %}
+    
+{% if form.non_field_errors %}
+         <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p> 
+    {% endif %}
+
     {% for field in form %}
         {% for error in field.errors %}
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -7,10 +12,12 @@
             </div>
         {% endfor %}
     {% endfor %}
+
     {% for error in form.non_field_errrors %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             {{error}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
+    
 {% endif %}
