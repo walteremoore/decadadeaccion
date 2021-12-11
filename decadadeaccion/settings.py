@@ -75,6 +75,14 @@ WSGI_APPLICATION = 'decadadeaccion.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "d2vmb0pgh3bj6u",
+        "USER": "uqbpjflyeqrlzr",
+        "PASSWORD": "89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742",
+        "HOST": "ec2-54-225-203-79.compute-1.amazonaws.com",
+        "PORT": "5432"
+    },
+    'default1': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "decadadeaccion",
         "USER": "root",
