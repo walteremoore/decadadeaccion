@@ -76,10 +76,9 @@ WSGI_APPLICATION = 'decadadeaccion.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#DATABASE_URL = 'postgres://uqbpjflyeqrlzr:89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742@ec2-54-225-203-79.compute-1.amazonaws.com:5432/d2vmb0pgh3bj6u'
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    ),
     'default1': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "d2vmb0pgh3bj6u",
@@ -96,8 +95,10 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": "3306"
     }
+    
 }
 
+DATABASES['default'] = dj_database_url.config(default='postgres://uqbpjflyeqrlzr:89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742@ec2-54-225-203-79.compute-1.amazonaws.com:5432/d2vmb0pgh3bj6u')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
