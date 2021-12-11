@@ -3,7 +3,7 @@
 {% block contenido %}
     <div class="row" style="padding:10px;">
         <div class="col">
-            <button type="button" class="btn btn-outline-success">Nuevo Artículo</button>
+            <a href="{% url 'articulos:admin_nuevo' %}" class="btn btn-outline-success">Nuevo Artículo</a>
         </div>
     </div>
     <table class="table table-hover">
