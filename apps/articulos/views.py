@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from apps.articulos.models import Articulo
 from django.views.generic import ListView, CreateView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from .forms import ArticuloForm
 from django.urls import reverse_lazy
 
@@ -32,5 +32,11 @@ class EditarAdmin(UpdateView):
     model = Articulo
     form_class = ArticuloForm
 
+    def get_success_url(self, **kwargs):
+        return reverse_lazy("articulos:admin_listar")
+
+class EliminarAdmin(DeleteView):
+    model = Articulo
+    
     def get_success_url(self, **kwargs):
         return reverse_lazy("articulos:admin_listar")

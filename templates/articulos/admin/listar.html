@@ -24,7 +24,7 @@
                     <td class="d-grid gap-2 d-md-block">
                         <a href="#" class="btn btn-outline-info">Ver</a>
                         <a href="{% url 'articulos:admin_editar' a.id %}" class="btn btn-outline-primary">Editar</a>
-                        <a href="#" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="{% url 'articulos:admin_eliminar' a.id %}" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>
             {% endfor %}
