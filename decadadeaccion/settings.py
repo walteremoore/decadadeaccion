@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'decadadeaccion.wsgi.application'
 #DATABASE_URL = 'postgres://uqbpjflyeqrlzr:89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742@ec2-54-225-203-79.compute-1.amazonaws.com:5432/d2vmb0pgh3bj6u'
 
 DATABASES = {
-    'default1': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "d2vmb0pgh3bj6u",
         "USER": "uqbpjflyeqrlzr",
@@ -87,7 +87,7 @@ DATABASES = {
         "HOST": "ec2-54-225-203-79.compute-1.amazonaws.com",
         "PORT": "5432"
     },
-    'default2': {
+    'default1': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': "decadadeaccion",
         "USER": "root",
@@ -98,7 +98,7 @@ DATABASES = {
     
 }
 
-DATABASES['default'] = dj_database_url.config(default='postgres://uqbpjflyeqrlzr:89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742@ec2-54-225-203-79.compute-1.amazonaws.com:5432/d2vmb0pgh3bj6u')
+DATABASES['default2'] = dj_database_url.config(default='postgres://uqbpjflyeqrlzr:89fa19e09f2127db11ff9ca3b6ba9691bee44fb3a450ec1b9ba9154c408ac742@ec2-54-225-203-79.compute-1.amazonaws.com:5432/d2vmb0pgh3bj6u')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
