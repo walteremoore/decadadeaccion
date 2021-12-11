@@ -39,7 +39,7 @@
             <form method="POST"> {% csrf_token %}
                 <!-- LOGO <img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
                 <h1 class="h3 mb-3 fw-normal">Acceder al Panel</h1>
-
+                {% include "includes/form_errors.html" %}
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInput" placeholder="Nombre de usuario" autofocus="" name="username">
                     <label for="floatingInput">Nombre de usuario</label>

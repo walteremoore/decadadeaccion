@@ -1,9 +1,9 @@
 {% extends 'base/base.html' %}
-
 {% block contenido %}
     <div>
         <form method="POST">{% csrf_token %}
             <div class="row" style="padding:10px;">
+                {% include "includes/form_errors.html" %}
                 {{form.as_p}}
                 <div class="col">
                     <button type="submit" class="btn btn-outline-success">Guardar</button>
