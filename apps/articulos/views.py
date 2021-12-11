@@ -9,3 +9,4 @@ def detalle(request):
 class ListarAdmin(ListView):
     template_name="articulos/admin/listar.html"
     model = Articulo
+    context_object_name="articulos"
