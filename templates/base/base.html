@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Década de Acción - Blog</title>
-        <link rel="icon" type="image/vnd.microsoft.icon" href="../media/favicon.ico">
+        <link rel="icon" type="image/vnd.microsoft.icon" href="{% static 'images/favicon.ico' %}">
         <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <meta name="theme-color" content="#2982b3">
@@ -33,28 +33,34 @@
             <main>
                 {% include "base/portada.html" %}
                     <!-- ======================== BARRA MENU ========================== -->
-                    <div class="album py-5 bg-light">
-                        <div class="container">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item">
-                                  <a class="nav-link active" aria-current="page" href="#">Menu</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="#">Objetivos</a>
-                                </li>
-                                <li class="nav-item">
-                                  <a class="nav-link" href="{% url 'articulos:admin_listar' %}">Artículos</a>
-                                </li>
-                              </ul>
-                    <!-- ======================== FIN BARRA MENU ========================== -->
-                            {% block contenido %}
-                            
-                            {% endblock contenido %}
+                    {% block menu %}
+                        <div class="album py-5 bg-light">
+                            <div class="container">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Menu</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Objetivos</a>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'articulos:admin_listar' %}">Artículos</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'articulos:mis_articulos' %}">Mis Artículos</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                    {% endblock menu %}
+                    <!-- ======================== FIN BARRA MENU ========================== -->
+                    {% block contenido %}
+                    {% endblock contenido %}
                         {% comment %} <!-- START THE FEATURETTES -->
                         <hr class="featurette-divider">
                         <div class="row featurette">

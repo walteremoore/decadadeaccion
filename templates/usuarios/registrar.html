@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+{% block menu %}
+{% endblock menu %}
+{% block contenido %}
+	<h1>Ingresa tus datos</h1>
+	<form method="POST">{% csrf_token %}
+		{% include "includes/form_errors.html" %}
+		
+		{% include "includes/forms.html" %}
+
+		<div class="row" style="padding:20px;">
+			<div class="col">
+				<button type="submit" class="btn btn-success">Registrarme</button>
+				<a href="{% url 'inicio' %}" class="btn btn-danger">Cancelar</a>
+			</div>
+		</div>
+	</form>
+{% endblock contenido %}

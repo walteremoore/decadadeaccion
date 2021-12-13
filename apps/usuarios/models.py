@@ -12,11 +12,12 @@ class Usuario(AbstractUser):
     ciudad = models.CharField(max_length=255, blank=True, null=True)
     provincia = models.CharField(max_length=255, blank=True, null=True)
     pais = models.CharField(max_length=255, blank=True, null=True)
-    foto = models.ImageField(null = True, blank=True, upload_to="images/")
+    foto = models.ImageField(null = True, upload_to="usuarios")
     fecha_nacimiento = models.DateField(blank=True, null=True)
+    es_administrador = models.BooleanField(default=False)
 
     class Meta:
         db_table="usuarios"
 
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+"""     def __str__(self):
+        return f"{self.first_name} {self.last_name}" """
