@@ -1,57 +1,29 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Carousel</a>
+        <a class="navbar-brand" href="{% url 'inicio' %}">Década de Acción</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">17 ODS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}" class="nav-link">Cerrar sesión</a></li>
+                    {% else %}    
+                        <li><a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a></li>
+                    {% endif %}
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
         </div>
     </div>
 </nav>
-
-
-{% comment %} 
-<div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-                <h4 class="text-white">Sobre Nosotros</h4>
-                <p class="text-muted">Este sitio fue desarrollado en el Informatorio - Comisión 4. Estamos aprendiendo Django.</p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}" class="text-white">Cerrar sesión</a></li>
-                    {% else %}    
-                        <li><a href="{% url 'login' %}" class="text-white">Iniciar sesión</a></li>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
-<div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-        <a href="{% url 'inicio' %}" class="navbar-brand d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>Década de Acción</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div> 
-{% endcomment %}

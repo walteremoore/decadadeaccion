@@ -31,7 +31,7 @@
             </header>
             <main>
                 {% include "base/portada.html" %}
-                    <!-- ================================================== -->
+                    <!-- ======================== BARRA MENU ========================== -->
                     <div class="album py-5 bg-light">
                         <div class="container">
                             <ul class="nav nav-pills">
@@ -48,6 +48,7 @@
                                   <a class="nav-link" href="{% url 'articulos:admin_listar' %}">Artículos</a>
                                 </li>
                               </ul>
+                    <!-- ======================== FIN BARRA MENU ========================== -->
                             {% block contenido %}
                             
                             {% endblock contenido %}
@@ -94,10 +95,3 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
-
-
-{% comment %}
-
-  
-
-{% endcomment %}
