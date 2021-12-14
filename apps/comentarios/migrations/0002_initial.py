@@ -9,19 +9,14 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('articulos', '0001_initial'),
         ('usuarios', '0001_initial'),
+        ('comentarios', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='articulo',
+            model_name='comentario',
             name='autor',
             field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='usuarios.usuario'),
-        ),
-        migrations.AddField(
-            model_name='articulo',
-            name='categoria',
-            field=models.ManyToManyField(to='articulos.Etiquetas'),
         ),
     ]

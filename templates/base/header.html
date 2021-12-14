@@ -19,7 +19,8 @@
                         <li><a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a></li>
                     {% endif %}
                 </li>
-            </ul>
+            </ul>\
+            {% include "base/contador.html" %}
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>

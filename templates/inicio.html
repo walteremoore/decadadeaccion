@@ -6,13 +6,13 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {% for a in articulos %}
                     <div class="col-lg-4">
-                        {% if p.imagen %}
-                            <img src="{{a.imagen.url}}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
+                        {% if a.imagen %}
+                            <img src="{{a.imagen}}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
                         {% else %}
                             <img src="{% static 'images/no_imagen.png' %}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
                         {% endif %}
                         <h2>{{ a.titulo }}</h2>
-                        <h2>{{ a.categoria.nombre }}</h2>
+                        <h4>{{ a.categoria.nombre }}</h4>
                         <p>{{ a.contenido }}</p>
                         <p><a class="btn btn-secondary" href="{% url 'articulos:detalle' %}">Ver más &raquo;</a></p>
                     </div>

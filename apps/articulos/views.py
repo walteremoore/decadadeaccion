@@ -39,7 +39,7 @@ class MisArticulos(LoginRequiredMixin, AdminRequiredMixins, ListView):
 	
 	def get_queryset(self):
 		# self.request
-		return Articulo.objects.filter(usuario__id=self.request.user.id)	
+		return Articulo.objects.filter(autor_id=self.request.user.id)	
 
 
 class NuevoAdmin(LoginRequiredMixin, AdminRequiredMixins, CreateView):
