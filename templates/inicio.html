@@ -12,8 +12,13 @@
                             <img src="{% static 'images/no_imagen.png' %}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
                         {% endif %}
                         <h2>{{ a.titulo }}</h2>
-                        <h4>{{ a.categoria.nombre }}</h4>
+                        {% for c in a.etiquetas.all %}
+                            <span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
+                        {% endfor %}
                         <p>{{ a.contenido }}</p>
+                        <p>Categoria: {{ a.categoria }}</p>
+                        <p>Autor: {{ a.autor }}</p>
+                        <p>Fecha de Publicación: {{ a.fecha_publicacion }}</p>
                         <p><a class="btn btn-secondary" href="{% url 'articulos:detalle' %}">Ver más &raquo;</a></p>
                     </div>
                 {% endfor %}

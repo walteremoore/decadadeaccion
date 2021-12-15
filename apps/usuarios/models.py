@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
     dni = models.IntegerField(null=True, blank=True)
-    estado = models.BooleanField(blank=True, null=True) #True=usuario_no_bloqueado, False=usuario_bloqueado
+    estado = models.BooleanField(blank=True, null=True, default=True) #True=usuario_no_bloqueado, False=usuario_bloqueado
     email = models.EmailField(max_length=254, blank=True, null=True)
     telefono = models.CharField(max_length=255, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)

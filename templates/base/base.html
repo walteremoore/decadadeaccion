@@ -48,10 +48,10 @@
                                     </li>
                                     {% if user.is_authenticated %}
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'articulos:admin_listar' %}">Artículos</a>
+                                            <a class="nav-link" href="{% url 'articulos:mis_articulos' %}">Mis Artículos</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{% url 'articulos:mis_articulos' %}">Mis Artículos</a>
+                                            <a class="nav-link" href="{% url 'articulos:admin_listar' %}">Gestionar todos los Artículos</a>
                                         </li>
                                     {% endif %}
                                 </ul>

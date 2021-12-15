@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from apps.core.decorators  import admin_required
 from apps.articulos.models import Articulo
 
+# Basado en funciones
 """ def inicio(request):
     contex = {
         "articulos": Articulo.objects.all()

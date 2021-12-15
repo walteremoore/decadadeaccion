@@ -12,8 +12,6 @@ class UsuarioForm(UserCreationForm):
 	username=forms.CharField(label="Nombre de usuario", widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Ingrese nombre de usuario"}))
 	first_name=forms.CharField(label="Nombre/s", widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Ingrese nombre/s"}))
 	last_name=forms.CharField(label="Apellido/s", widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Ingrese su apellido/s"}))
-	#password2 = forms.CharField(widget=forms.PasswordInput()) 
-	#password = forms.CharField(widget=forms.PasswordInput())
 	dni=forms.CharField(label="Nro DNI", widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Ingrese su número de DNI sin puntos"}))
 	email=forms.CharField(label="Correo Electronico", widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Ingrese su EMAIL"}))
 	telefono=forms.CharField(label="Tel/Cel", widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"Ingrese su número de telefono"}))

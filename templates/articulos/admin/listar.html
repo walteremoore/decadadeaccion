@@ -1,6 +1,10 @@
 {% extends 'base/base.html' %}
 
     {% block contenido %}
+        <form class="d-flex">
+            <input class="form-control me-2" name="titulo_articulo" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
         <div class="row" style="padding:10px;">
             <div class="col">
                 <a href="{% url 'articulos:admin_nuevo' %}" class="btn btn-outline-success">Nuevo Artículo</a>
@@ -30,5 +34,6 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% include "includes/paginador.html" %}
     {% endblock contenido %}
 

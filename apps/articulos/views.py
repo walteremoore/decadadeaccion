@@ -18,7 +18,7 @@ class ListarAdmin(LoginRequiredMixin, AdminRequiredMixins, ListView):
     template_name="articulos/admin/listar.html"
     model = Articulo
     context_object_name="articulos"
-    paginate_by = 2
+    paginate_by = 20
 
 def get_context_data(self, **kwargs):
 	context = super(ListarAdmin, self).get_context_data(**kwargs)
@@ -39,7 +39,7 @@ class MisArticulos(LoginRequiredMixin, AdminRequiredMixins, ListView):
 	
 	def get_queryset(self):
 		# self.request
-		return Articulo.objects.filter(autor_id=self.request.user.id)	
+		return Articulo.objects.filter(autor__id=self.request.user.id)	
 
 
 class NuevoAdmin(LoginRequiredMixin, AdminRequiredMixins, CreateView):
@@ -56,7 +56,7 @@ class NuevoAdmin(LoginRequiredMixin, AdminRequiredMixins, CreateView):
         return super(NuevoAdmin, self).form_valid(form)
 
 
-class EditarAdmin(UpdateView):
+class EditarAdmin(LoginRequiredMixin, AdminRequiredMixins, UpdateView):
     template_name = "articulos/admin/editar.html"
     model = Articulo
     form_class = ArticuloForm
@@ -64,7 +64,7 @@ class EditarAdmin(UpdateView):
     def get_success_url(self, **kwargs):
         return reverse_lazy("articulos:admin_listar")
 
-class EliminarAdmin(DeleteView):
+class EliminarAdmin(LoginRequiredMixin, AdminRequiredMixins, DeleteView):
     model = Articulo
     
     def get_success_url(self, **kwargs):
