@@ -45,23 +45,23 @@
     <div class="container">
     <div class="row">
         <div class="col-lg-6 offset-3">
-            <h2>Sale up to 45%!</h2>
+            <h4>Tiempo restante para lograr los Objetivos</h4>
             <div class="timer">
                 <div>
                 <span class="days" id="day"></span> 
-                <div class="smalltext">Days</div>
+                <div class="smalltext">Días</div>
                 </div>
                 <div>
                 <span class="hours" id="hour"></span> 
-                <div class="smalltext">Hours</div>
+                <div class="smalltext">Horas</div>
                 </div>
                 <div>
                 <span class="minutes" id="minute"></span> 
-                <div class="smalltext">Minutes</div>
+                <div class="smalltext">Minutos</div>
                 </div>
                 <div>
                 <span class="seconds" id="second"></span> 
-                <div class="smalltext">Seconds</div>
+                <div class="smalltext">Segundos</div>
                 </div>
                 <p id="time-up"></p>
             </div>
@@ -69,7 +69,7 @@
     </div>
     </div>
     <script>
-        var deadline = new Date("july 30, 2050 15:37:25").getTime();             
+        var deadline = new Date("july 01, 2030 00:00:00").getTime();             
         var x = setInterval(function() {
         var currentTime = new Date().getTime();                
         var t = deadline - currentTime; 

@@ -3,8 +3,6 @@ from django.contrib.auth.models import AbstractUser
 
 class Usuario(AbstractUser):
     dni = models.IntegerField(null=True, blank=True)
-    #nombre = models.CharField(max_length=255, blank=True, null=True)
-    #apellido = models.CharField(max_length=255, blank=True, null=True)
     estado = models.BooleanField(blank=True, null=True) #True=usuario_no_bloqueado, False=usuario_bloqueado
     email = models.EmailField(max_length=254, blank=True, null=True)
     telefono = models.CharField(max_length=255, blank=True, null=True)
@@ -30,6 +28,3 @@ class Usuario(AbstractUser):
 
     def quitar_admin(self): #usuario_escritor
         self.es_administrador = False
-
-"""     def __str__(self):
-        return f"{self.first_name} {self.last_name}" """
