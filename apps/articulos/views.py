@@ -4,15 +4,12 @@ from apps.categorias.models import Categoria
 from apps.comentarios.models import Comentario
 from django.views.generic import ListView, CreateView
 from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from .forms import ArticuloForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.core.mixins import AdminRequiredMixins
 from .forms  import ArticuloForm
-
-def detalle(request):
-    contex = {}
-    return render(request, "articulos/detalle.html", contex)
 
 class ListarAdmin(LoginRequiredMixin, AdminRequiredMixins, ListView):
     template_name="articulos/admin/listar.html"
@@ -69,3 +66,8 @@ class EliminarAdmin(LoginRequiredMixin, AdminRequiredMixins, DeleteView):
     
     def get_success_url(self, **kwargs):
         return reverse_lazy("articulos:admin_listar")
+
+class Detalle (DetailView):
+    template_name = "articulos/detalle.html"
+    model = Articulo
+    context_object_name="articulo"

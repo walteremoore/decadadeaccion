@@ -19,7 +19,7 @@
                         <p>Categoria: {{ a.categoria }}</p>
                         <p>Autor: {{ a.autor }}</p>
                         <p>Fecha de Publicación: {{ a.fecha_publicacion }}</p>
-                        <p><a class="btn btn-secondary" href="{% url 'articulos:detalle' %}">Ver más &raquo;</a></p>
+                        <p><a class="btn btn-secondary" href="{% url 'articulos:detalle' a.id %}">Ver más &raquo;</a></p>
                     </div>
                 {% endfor %}
             </div>

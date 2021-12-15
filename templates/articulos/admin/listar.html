@@ -14,8 +14,12 @@
             <thead>
                 <tr>
                     <th scope="col">#ID</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Título</th>
                     <th scope="col">Contenido</th>
+                    <th scope="col">Fecha de Publicación</th>
+                    <th scope="col">Etiquetas</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -23,10 +27,17 @@
                 {% for a in articulos %}
                     <tr>
                         <th scope="row">{{a.id}}</th>
+                        <td>{{a.autor}}</td>
                         <td>{{a.titulo}}</td>
+                        <td>{{a.categoria}}</td>
                         <td>{{a.contenido}}</td>
+                        <td>{{a.fecha_publicacion}}</td>
+                        <td>{% for c in a.etiquetas.all %}
+                                <span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
+                            {% endfor %}
+                        </td>   
                         <td class="d-grid gap-2 d-md-block">
-                            <a href="#" class="btn btn-outline-info">Ver</a>
+                            <a href="{% url 'articulos:detalle' a.id %}" class="btn btn-outline-info">Ver</a>
                             <a href="{% url 'articulos:admin_editar' a.id %}" class="btn btn-outline-primary">Editar</a>
                             <a href="{% url 'articulos:admin_eliminar' a.id %}" class="btn btn-outline-danger">Eliminar</a>
                         </td>
