@@ -1,26 +1,27 @@
 {% extends 'base/base.html' %}
 {% load static %}
-
     {% block contenido %}
         <div class="container marketing">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 {% for a in articulos %}
-                    <div class="col-lg-4">
-                        {% if a.imagen %}
-                            <img src="{{a.imagen}}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
-                        {% else %}
-                            <img src="{% static 'images/no_imagen.png' %}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
-                        {% endif %}
-                        <h2>{{ a.titulo }}</h2>
-                        {% for c in a.etiquetas.all %}
-                            <span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
-                        {% endfor %}
-                        <p>{{ a.contenido }}</p>
-                        <p>Categoria: {{ a.categoria }}</p>
-                        <p>Autor: {{ a.autor }}</p>
-                        <p>Fecha de Publicación: {{ a.fecha_publicacion }}</p>
-                        <p><a class="btn btn-secondary" href="{% url 'articulos:detalle' a.id %}">Ver más &raquo;</a></p>
-                    </div>
+                    {% if a.visibilidad %}
+                        <div class="col-lg-4">
+                            {% if a.imagen %}
+                                <img src="{{a.imagen}}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
+                            {% else %}
+                                <img src="{% static 'images/no_imagen.png' %}" class="bd-placeholder-img rounded-circle" title="{{ a.titulo }}" width="140" height="140">
+                            {% endif %}
+                            <h2>{{ a.titulo }}</h2>
+                            {% for c in a.etiquetas.all %}
+                                <span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
+                            {% endfor %}
+                            <p>{{ a.contenido }}</p>
+                            <p>Categoria: {{ a.categoria }}</p>
+                            <p>Autor: {{ a.autor }}</p>
+                            <p>Fecha de Publicación: {{ a.fecha_publicacion }}</p>
+                            <p><a class="btn btn-secondary" href="{% url 'articulos:detalle' a.id %}">Ver más &raquo;</a></p>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>

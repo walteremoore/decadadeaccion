@@ -16,7 +16,7 @@ class Articulo(models.Model):
     titulo = models.CharField(max_length=255, blank=True, null=True)
     contenido = models.TextField(blank=True, null=True)
     estado = models.BooleanField(blank=True, null=True, default=True) # True=visible, False=baja logica
-    visibilidad = models.BooleanField(blank=True, null=True, default=False) # True=publicado, False=borrador
+    visibilidad = models.BooleanField(default=False) # True=publicado, False=borrador
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
     etiquetas = models.ManyToManyField(Etiqueta)
