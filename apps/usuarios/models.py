@@ -1,9 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+ESTADO_USUARIOS = (
+    (1, "Usuario Activo"),
+    (2, "Usuario Inactivo - Bloqueado")
+)
+
 class Usuario(AbstractUser):
     dni = models.IntegerField(null=True, blank=True)
-    estado = models.BooleanField(blank=True, null=True, default=True) #True=usuario_no_bloqueado, False=usuario_bloqueado
+    estado = models.IntegerField(choices=ESTADO_USUARIOS, default=1)
     email = models.EmailField(max_length=254, blank=True, null=True)
     telefono = models.CharField(max_length=255, blank=True, null=True)
     direccion = models.CharField(max_length=255, blank=True, null=True)
@@ -17,14 +22,3 @@ class Usuario(AbstractUser):
     class Meta:
         db_table="usuarios"
 
-    def bloquear(self): #baja_logica
-        self.estado = False
-
-    def desbloquear(self): #usuario_no_bloqueado
-        self.estado = True
-
-    def hacer_admin(self): #usuario_admin
-        self.es_administrador = True
-
-    def quitar_admin(self): #usuario_escritor
-        self.es_administrador = False
