@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+    {% block contenido %}
+        <form class="d-flex">
+            <input class="form-control me-2" name="titulo_comentario" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        <div class="row" style="padding:10px;">
+            <div class="col">
+                <a href="{% url 'comentarios:admin_nuevo' %}" class="btn btn-outline-success">Nuevo Comentario</a>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Artículo</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Contenido</th>
+                    <th scope="col">Visibilidad</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in comentarios %}
+                    <tr>
+                        <th scope="row">{{c.id}}</th>
+                        <td>{{c.autor}}</td>
+                        <td>{{c.articulo}}</td>
+                        <td>{{c.titulo}}</td>
+                        <td>{{c.contenido}}</td>
+                        <td>{{c.visibilidad}}</td>
+                        <td class="d-grid gap-2 d-md-block">
+                            <a href="{% url 'comentarios:detalle' c.id %}" class="btn btn-outline-info">Ver</a>
+                            <a href="{% url 'comentarios:admin_editar' c.id %}" class="btn btn-outline-primary">Editar</a>
+                            <a href="{% url 'comentarios:admin_eliminar' c.id %}" class="btn btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include "includes/paginador.html" %}
+    {% endblock contenido %}
+

@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+    {% block contenido %}
+        <form class="d-flex">
+            <input class="form-control me-2" name="titulo_usuario" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        <div class="row" style="padding:10px;">
+            <div class="col">
+                <a href="{% url 'usuarios:admin_nuevo' %}" class="btn btn-outline-success">Nuevo Usuario</a>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Nombre/s</th>
+                    <th scope="col">Apellido/s</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">País</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Admin</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for u in usuarios %}
+                    <tr>
+                        <th scope="row">{{u.id}}</th>
+                        <td>{{u.first_name}}</td>
+                        <td>{{u.last_name}}</td>
+                        <td>{{u.dni}}</td>
+                        <td>{{u.estado}}</td>
+                        <td>{{u.email}}</td>
+                        <td>{{u.telefono}}</td>
+                        <td>{{u.direccion}}</td>
+                        <td>{{u.ciudad}}</td>
+                        <td>{{u.provincia}}</td>
+                        <td>{{u.pais}}</td>
+                        <td>{{u.fecha_nacimiento}}</td>
+                        <td>{{u.es_administrador}}</td>
+                        <td class="d-grid gap-2 d-md-block">
+                            <a href="{% url 'usuarios:admin_editar' u.id %}" class="btn btn-outline-primary">Editar</a>
+                            <a href="{% url 'usuarios:admin_eliminar' u.id %}" class="btn btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include "includes/paginador.html" %}
+    {% endblock contenido %}
+

@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+{% block contenido %}
+<form method="post">{% csrf_token %}
+    <p> "ALERTA!! va a proceder a eliminar la Categoria: "{{ object }}". ¿Estas seguro? </p>
+        <button type="submit" value="Confirm" class="btn btn-danger">Confirmar Borrado</button>
+        <a href="{% url 'categorias:admin_listar' %}" class="btn btn-secondary">Volver atras</a>
+    </form>
+{% endblock contenido %}

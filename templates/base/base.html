@@ -44,16 +44,25 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{% url 'articulos:mis_articulos' %}">Gestionar mis Artículos</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'comentarios:mis_comentarios' %}">Gestionar mis Comentarios</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'usuarios:admin_editar' user.id %}">Gestionar mi Usuario</a>
+                                        </li>
                                         <!-- ================= MENU SUPER ADMIN ====================== -->
                                             {% if user.es_administrador %}
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="{% url 'articulos:admin_listar' %}">Gestionar todos los Artículos</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">Gestionar todas las Categorias</a>
+                                                    <a class="nav-link" href="{% url 'categorias:admin_listar' %}">Gestionar todas las Categorias</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">Gestionar todos las Usuarios</a>
+                                                    <a class="nav-link" href="{% url 'usuarios:admin_listar' %}">Gestionar todos las Usuarios</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'comentarios:admin_listar' %}">Gestionar todos los Comentarios</a>
                                                 </li>
                                             {% endif %}
                                         <!-- ================= MENU SUPER ADMIN ====================== -->

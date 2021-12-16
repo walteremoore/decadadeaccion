@@ -1,0 +1,39 @@
+    {% extends 'base/base.html' %}
+
+    {% block contenido %}
+        <form class="d-flex">
+            <input class="form-control me-2" name="nombre_categoria" type="search" placeholder="Buscar" aria-label="Buscar">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+        <div class="row" style="padding:10px;">
+            <div class="col">
+                <a href="{% url 'categorias:admin_nuevo' %}" class="btn btn-outline-success">Nueva Categoria</a>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in categorias %}
+                    <tr>
+                        <th scope="row">{{c.id}}</th>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.descripcion}}</td>
+                        <td class="d-grid gap-2 d-md-block">
+                            <a href="{% url 'categorias:detalle' c.id %}" class="btn btn-outline-info">Ver</a>
+                            <a href="{% url 'categorias:admin_editar' c.id %}" class="btn btn-outline-primary">Editar</a>
+                            <a href="{% url 'categorias:admin_eliminar' c.id %}" class="btn btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include "includes/paginador.html" %}
+    {% endblock contenido %}
+

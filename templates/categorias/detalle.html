@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+{% block portada %}
+
+{% endblock portada %}
+{% load static %}
+{% block contenido %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <style>
+        .MakaleYazariAdi{
+            line-height:34px;
+        }  
+        #BegeniButonlari{
+            float:right;
+            margin-top:15px;
+        }
+    </style>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">Categoria: {{categoria.nombre}}</h4>
+                        <p>Descripción: {{categoria.descripcion}}</p>
+                    </div>              
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}
