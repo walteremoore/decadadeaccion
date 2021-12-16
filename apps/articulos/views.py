@@ -29,6 +29,8 @@ class ListarAdmin(LoginRequiredMixin, AdminRequiredMixins, ListView):
             query = query.filter(Q(titulo__icontains=busqueda_titulo)|
                                  Q(contenido__icontains=busqueda_titulo)).distinct()
             return query
+        else:
+            return Articulo.objects.all().order_by("titulo")
 
 class MisArticulos(LoginRequiredMixin, AdminRequiredMixins, ListView):
 	template_name="articulos/admin/listar.html"
