@@ -27,7 +27,7 @@ class Articulo(models.Model):
     contenido = models.TextField(blank=True, null=True)
     estado = models.IntegerField(choices=ESTADOS_ARTICULO, default=1)
     visibilidad = models.IntegerField(choices=VISIBILIDAD_ARTICULO, default=1)
-    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE, null=True)
+    autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=True)
     etiquetas = models.ManyToManyField(Etiqueta)
     imagen = models.CharField(max_length=255, blank=True, null=True)

@@ -2,7 +2,7 @@
 
     {% block contenido %}
         <form class="d-flex">
-            <input class="form-control me-2" name="titulo_articulo" type="search" placeholder="Buscar" aria-label="Buscar">
+            <input class="form-control me-2" name="titulo_articulo" type="search" placeholder="Buscar" aria-label="Buscar" value="{{busqueda_titulo}}">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
         <div class="row" style="padding:10px;">
@@ -28,8 +28,8 @@
                     <tr>
                         <th scope="row">{{a.id}}</th>
                         <td>{{a.autor}}</td>
-                        <td>{{a.titulo}}</td>
                         <td>{{a.categoria}}</td>
+                        <td>{{a.titulo}}</td>
                         <td>{{a.contenido}}</td>
                         <td>{{a.fecha_publicacion}}</td>
                         <td>{% for c in a.etiquetas.all %}

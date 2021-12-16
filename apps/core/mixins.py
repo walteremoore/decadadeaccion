@@ -1,7 +1,5 @@
 from django.core.exceptions import PermissionDenied
 class AdminRequiredMixins():
-	# permisos_requeridos = []
-
 
 	def dispatch(self, request, *args, **kwars):
 		if not request.user.es_administrador:

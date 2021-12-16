@@ -7,10 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">17 ODS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link active" aria-current="page" href="https://www.un.org/sustainabledevelopment/es/objetivos-de-desarrollo-sostenible/">17 ODS - ONU</a>
                 </li>
                 <li class="nav-item">
                     {% if user.is_authenticated %}
@@ -19,11 +16,11 @@
                         <li><a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a></li>
                     {% endif %}
                 </li>
-            </ul>\
+            </ul>
             {% include "base/contador.html" %}
-            <form class="d-flex">
-                <input class="form-control me-2" name="titulo_articulo" type="search" placeholder="Buscar" aria-label="Buscar" value="{{titulo_buscado}}">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <form class="d-flex" method="GET" id="custom-search-input">
+                <input type="text" class="form-control me-2" name="titulo_articulo" placeholder="Buscar">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
         </div>
     </div>
