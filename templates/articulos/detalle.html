@@ -82,7 +82,7 @@
 
     <!-- =================== VER LOS COMENTARIOS ======================= -->
     {% for c in articulo.comentario_set.all %}
-            {% if c.visibilidad %}
+            {% if c.visibilidad and c.estado %}
                 <div class="container">
                     <div class="comment-container">
                         <div class="row add-comment reply-comment" style="margin-bottom: 1rem" ;>

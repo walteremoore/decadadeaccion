@@ -79,7 +79,7 @@ class EliminarAdmin(LoginRequiredMixin, DeleteView):
     model = Usuario
     
     def get_success_url(self, **kwargs):
-        return reverse_lazy("usuarios:admin_listar")
+        return reverse_lazy("usuarios:mis_usuarios")
 
 class Detalle (DetailView):
     template_name = "usuarios/detalle.html"
