@@ -6,7 +6,7 @@ from tinymce import models as tinymce_models
 class Comentario(models.Model):
     articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE)
     contenido = tinymce_models.HTMLField()
-    estado = models.BooleanField(blank=True, null=True, default=True) # True=aprobado, False=baja_logica
+    estado = models.BooleanField(blank=True, null=True, default=True) # True=comentario_nuevo, False=baja_logica
     visibilidad = models.BooleanField(blank=True, null=True, default=False) # True=visible, False=pendiente de moderar
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fecha_creacion = models.DateTimeField(auto_now_add=True)

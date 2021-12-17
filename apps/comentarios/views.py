@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from apps.articulos.models import Articulo
 from apps.categorias.models import Categoria
 from apps.comentarios.models import Comentario
@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.core.mixins import AdminRequiredMixins
 from .forms  import ComentarioForm
 from django.db.models import Q
+from django.http import HttpResponse, HttpResponseRedirect
 
 class ListarAdmin(LoginRequiredMixin, AdminRequiredMixins, ListView):
     template_name="comentarios/admin/listar.html"
@@ -62,13 +63,13 @@ class EditarAdmin(UpdateView):
     context_object_name="comentario"
 
     def get_success_url(self, **kwargs):
-        return reverse_lazy("comentarios:admin_listar")
+        return reverse_lazy("comentarios:mis_comentarios")
 
 class EliminarAdmin(LoginRequiredMixin, DeleteView):
     model = Comentario
     
     def get_success_url(self, **kwargs):
-        return reverse_lazy("comentarios:admin_listar")
+        return reverse_lazy("comentarios:mis_comentarios")
 
 class Detalle (DetailView):
     template_name = "comentarios/detalle.html"
@@ -85,8 +86,6 @@ def bajaLogicaCom(request, aid):
         raise Http404("Poll does not exist")
     return render(request, 'articulos/admin/eliminar.html', {'articulo': p})
 
-
-
 def restaurarCom(request, aid):
     try:
         p = Comentario.objects.get(pk=aid)
@@ -96,3 +95,23 @@ def restaurarCom(request, aid):
     except Poll.DoesNotExist:
         raise Http404("Poll does not exist")
     return render(request, 'articulos/admin/eliminar.html', {'articulo': p})
+
+def comentarioNuevo(request, aid):
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            articulo = Articulo.objects.get(pk=aid)
+            comentario.articulo = articulo
+            comentario.autor = request.user
+            comentario.save()
+            return HttpResponseRedirect('/')   
+    else:   
+        form = ComentarioForm()
+    return render(request, 'comentarios/admin/nuevo.html', {'form': form})
+
+def aprobarCom(request, cid):
+    p = Comentario.objects.get(pk=cid)
+    p.visibilidad = True
+    p.save()
+    return redirect("/")

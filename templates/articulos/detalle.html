@@ -159,13 +159,7 @@
                     <div class="row add-comment">
                         <form action="" method="post">
                             <div class="form-group">
-                                <label for="email"  class="mr-1">Título: </label>
-                                <input type="text" name="name" class="form-control" id="email">
-                                <label for="email"  class="mr-1">Agregue su comentario por favor...: </label>
-                                <textarea name="" id="" class="form-control"  style="margin-bottom: 0" placeholder='Agregue su comentario por favor...'
-                                    rows="5">
-                                </textarea>
-                                <button  class="form-control">Agregar Comentario</button>
+                                <a href={% url 'comentarios:admin_nuevo' articulo.id %} role="button" class="form-control">Agregar Comentario</a>
                             </div>
                         </form>
                     </div>
@@ -176,20 +170,22 @@
     <!-- ================= FIN AGREGAR COMENTARIOS ==================== -->
 
     <!-- =================== VER LOS COMENTARIOS ======================= -->
-    {% for c in comentario.articulo.id %}
-            <div class="container">
-                <div class="comment-container">
-                    <div class="row add-comment reply-comment" style="margin-bottom: 1rem" ;>
-                        <div class="form-group">
-                            <span>Título: {{c.titulo}} </span>
-                            <span>Contenido: </span>
-                            <textarea name="" id="" readonly class="form-control"
-                                rows="5"> {{c.contenido}}
-                            </textarea>
+    {% for c in articulo.comentario_set.all %}
+            {% if c.visibilidad %}
+                <div class="container">
+                    <div class="comment-container">
+                        <div class="row add-comment reply-comment" style="margin-bottom: 1rem" ;>
+                            <div class="form-group">
+                                <span>Título: {{c.titulo}} </span>
+                                <span>Contenido: </span>
+                                <textarea name="" id="" readonly class="form-control"
+                                    rows="5"> {{c.contenido}}
+                                </textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
     {% endfor %}
     <!-- ================= FIN VER LOS COMENTARIOS ===================== -->
 {% endblock contenido %}
