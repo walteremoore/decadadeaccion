@@ -3,6 +3,6 @@
 <form method="post">{% csrf_token %}
     <p> "ALERTA!! va a proceder a eliminar el Artículo: "{{ object }}". ¿Estas seguro? </p>
         <button type="submit" value="Confirm" class="btn btn-danger">Confirmar Borrado</button>
-        <a href="{% url 'categorias:admin_listar' %}" class="btn btn-secondary">Volver atras</a>
+        <a href="{% url 'articulos:mis_articulos' %}" class="btn btn-secondary">Volver atras</a>
     </form>
 {% endblock contenido %}

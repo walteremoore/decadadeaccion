@@ -65,7 +65,7 @@
     <!-- =================== AGREGAR COMENTARIOS ======================= -->
     {% block comentar_articulo %}
         {% if user.is_authenticated %}
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+{% comment %}             <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <style>
@@ -153,7 +153,7 @@
                 height: 8vh;
                 width: 8vh;
                 }
-            </style>        
+            </style>  {% endcomment %}       
             <div class="container">
                 <div class="comment-container">
                     <div class="row add-comment">
@@ -179,7 +179,7 @@
                                 <span>Título: {{c.titulo}} </span>
                                 <span>Contenido: </span>
                                 <textarea name="" id="" readonly class="form-control"
-                                    rows="5"> {{c.contenido}}
+                                    rows="5"> {{c.contenido|safe}}
                                 </textarea>
                             </div>
                         </div>
