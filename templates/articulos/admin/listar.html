@@ -39,7 +39,11 @@
                         <td class="d-grid gap-2 d-md-block">
                             <a href="{% url 'articulos:detalle' a.id %}" class="btn btn-outline-info">Ver</a>
                             <a href="{% url 'articulos:admin_editar' a.id %}" class="btn btn-outline-primary">Editar</a>
-                            <a href="{% url 'articulos:admin_eliminar' a.id %}" class="btn btn-outline-danger">Eliminar</a>
+                            {% if a.estado == 1 %}
+                                <a href="{% url 'articulos:admin_eliminar' a.id %}" class="btn btn-outline-danger">Eliminar</a>
+                            {% else %}
+                                <a href="{% url 'articulos:admin_restaurar' a.id %}" class="btn btn-outline-info">Restaurar</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

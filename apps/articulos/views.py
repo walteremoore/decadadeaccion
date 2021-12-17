@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from apps.articulos.models import Articulo
 from apps.categorias.models import Categoria
 from apps.comentarios.models import Comentario
@@ -32,7 +32,7 @@ class ListarAdmin(LoginRequiredMixin, AdminRequiredMixins, ListView):
         else:
             return Articulo.objects.all().order_by("titulo")
 
-class MisArticulos(LoginRequiredMixin, AdminRequiredMixins, ListView):
+class MisArticulos(LoginRequiredMixin, ListView):
 	template_name="articulos/admin/listar.html"
 	model = Articulo
 	context_object_name="articulos"
@@ -47,7 +47,7 @@ class NuevoAdmin(LoginRequiredMixin, CreateView):
     form_class = ArticuloForm
 
     def get_success_url(self, **kwargs):
-        return reverse_lazy("articulos:admin_listar")
+        return reverse_lazy("articulos:mis_articulos")
 
     def form_valid(self, form):
         f = form.save(commit=False)
@@ -64,6 +64,15 @@ class EditarAdmin(UpdateView):
     def get_success_url(self, **kwargs):
         return reverse_lazy("articulos:admin_listar")
 
+class BorrarLogicoAdmin(UpdateView):
+    template_name = "articulos/admin/eliminar.html"
+    model = Articulo
+    #form_class = ArticuloBorrarLogicoForm
+    context_object_name="articulo"
+
+    def get_success_url(self, **kwargs):
+        return reverse_lazy("articulos:admin_listar")
+    
 class EliminarAdmin(LoginRequiredMixin, DeleteView):
     model = Articulo
     
@@ -74,3 +83,25 @@ class Detalle (DetailView):
     template_name = "articulos/detalle.html"
     model = Articulo
     context_object_name="articulo"
+
+def bajaLogica(request, aid):
+    try:
+        p = Articulo.objects.get(pk=aid)
+        p.estado = 2
+        p.save()
+        return redirect("/")
+    except Poll.DoesNotExist:
+        raise Http404("Poll does not exist")
+    return render(request, 'articulos/admin/eliminar.html', {'articulo': p})
+
+
+
+def restaurarArticulo(request, aid):
+    try:
+        p = Articulo.objects.get(pk=aid)
+        p.estado = 1
+        p.save()
+        return redirect("/")
+    except Poll.DoesNotExist:
+        raise Http404("Poll does not exist")
+    return render(request, 'articulos/admin/eliminar.html', {'articulo': p})

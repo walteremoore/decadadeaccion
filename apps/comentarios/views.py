@@ -32,7 +32,7 @@ class ListarAdmin(LoginRequiredMixin, AdminRequiredMixins, ListView):
         else:
             return Comentario.objects.all().order_by("titulo")
 
-class MisComentarios(LoginRequiredMixin, AdminRequiredMixins, ListView):
+class MisComentarios(LoginRequiredMixin, ListView):
 	template_name="comentarios/admin/listar.html"
 	model = Comentario
 	context_object_name="comentarios"
@@ -47,7 +47,7 @@ class NuevoAdmin(LoginRequiredMixin, CreateView):
     form_class = ComentarioForm
 
     def get_success_url(self, **kwargs):
-        return reverse_lazy("comentarios:admin_listar")
+        return reverse_lazy("comentarios:mis_comentarios")
 
     def form_valid(self, form):
         f = form.save(commit=False)
@@ -74,3 +74,25 @@ class Detalle (DetailView):
     template_name = "comentarios/detalle.html"
     model = Comentario
     context_object_name="comentario"
+
+def bajaLogicaCom(request, aid):
+    try:
+        p = Comentario.objects.get(pk=aid)
+        p.estado = False
+        p.save()
+        return redirect("/")
+    except Poll.DoesNotExist:
+        raise Http404("Poll does not exist")
+    return render(request, 'articulos/admin/eliminar.html', {'articulo': p})
+
+
+
+def restaurarCom(request, aid):
+    try:
+        p = Comentario.objects.get(pk=aid)
+        p.estado = True
+        p.save()
+        return redirect("/")
+    except Poll.DoesNotExist:
+        raise Http404("Poll does not exist")
+    return render(request, 'articulos/admin/eliminar.html', {'articulo': p})

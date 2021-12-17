@@ -17,3 +17,11 @@ class ArticuloForm(forms.ModelForm):
         widgets = {
             'fecha_publicacion': DateInput(),
         }
+
+""" class ArticuloBorrarLogicoForm(forms.ModelForm):
+    estado = forms.IntegerField(default=2, disabled=True)
+    
+    class Meta:
+        model = Articulo
+        fields = ["estado"]
+         """

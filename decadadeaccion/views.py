@@ -20,6 +20,7 @@ from django.db.models import Q
         context = super(Inicio, self).get_context_data(**kwargs)
         context["articulos"] = Articulo.objects.all()
         return context """
+
 class Inicio(ListView):
     template_name="inicio.html"
     model = Articulo
@@ -38,4 +39,4 @@ class Inicio(ListView):
                                  Q(contenido__icontains=busqueda_titulo)).distinct()
             return query
         else:
-            return Articulo.objects.filter(visibilidad=1)
+            return Articulo.objects.filter(visibilidad=1,estado=1)
