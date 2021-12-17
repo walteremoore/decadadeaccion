@@ -62,7 +62,7 @@ class EditarAdmin(UpdateView):
     context_object_name="articulo"
 
     def get_success_url(self, **kwargs):
-        return reverse_lazy("articulos:admin_listar")
+        return reverse_lazy("articulos:mis_articulos")
 
 class BorrarLogicoAdmin(UpdateView):
     template_name = "articulos/admin/eliminar.html"
@@ -71,13 +71,13 @@ class BorrarLogicoAdmin(UpdateView):
     context_object_name="articulo"
 
     def get_success_url(self, **kwargs):
-        return reverse_lazy("articulos:admin_listar")
+        return reverse_lazy("articulos:mis_articulos")
     
 class EliminarAdmin(LoginRequiredMixin, DeleteView):
     model = Articulo
     
     def get_success_url(self, **kwargs):
-        return reverse_lazy("articulos:admin_listar")
+        return reverse_lazy("articulos:mis_articulos")
 
 class Detalle (DetailView):
     template_name = "articulos/detalle.html"

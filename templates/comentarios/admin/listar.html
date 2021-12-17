@@ -13,30 +13,36 @@
                     <th scope="col">Artículo</th>
                     <th scope="col">Título</th>
                     <th scope="col">Contenido</th>
-                    <th scope="col">Visibilidad</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 {% for c in comentarios %}
-                    <tr>
-                        <th scope="row">{{c.id}}</th>
-                        <td>{{c.autor}}</td>
-                        <td>{{c.articulo}}</td>
-                        <td>{{c.titulo}}</td>
-                        <td>{{c.contenido|safe}}</td>
-                        <td>{{c.visibilidad}}</td>
-                        <td class="d-grid gap-2 d-md-block">
-                            <a href="{% url 'comentarios:detalle' c.id %}" class="btn btn-outline-info">Ver</a>
-                            <a href="{% url 'comentarios:admin_editar' c.id %}" class="btn btn-outline-primary">Editar</a>
-                            <a href="{% url 'comentarios:admin_eliminar' c.id %}" class="btn btn-outline-danger">Eliminar</a>
-                            {% if user.es_administrador %}
-                                {% if not c.visibilidad %}
-                                    <a href="{% url 'comentarios:admin_aprobar' c.id %}" class="btn btn-outline-info">Aprobar</a>
+                    {% if c.estado %}
+                        <tr>
+                            <th scope="row">{{c.id}}</th>
+                            <td>{{c.autor}}</td>
+                            <td>{{c.articulo}}</td>
+                            <td>{{c.titulo}}</td>
+                            <td>{{c.contenido|safe}}</td>
+                            <td>{% if c.visibilidad %}
+                                    <button type="button" class="btn btn-outline-success">Visible</button>
+                                {% else %}
+                                    <button type="button" class="btn btn-outline-danger">Pend. de Aprobación</button>
+                                {% endif %}</td>
+                            <td class="d-grid gap-2 d-md-block">
+                                <a href="{% url 'comentarios:detalle' c.id %}" class="btn btn-outline-info">Ver</a>
+                                <a href="{% url 'comentarios:admin_editar' c.id %}" class="btn btn-outline-primary">Editar</a>
+                                <a href="{% url 'comentarios:admin_eliminar' c.id %}" class="btn btn-outline-danger">Eliminar</a>
+                                {% if user.es_administrador %}
+                                    {% if not c.visibilidad %}
+                                        <a href="{% url 'comentarios:admin_aprobar' c.id %}" class="btn btn-outline-info">Aprobar</a>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
