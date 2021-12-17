@@ -29,7 +29,7 @@
                         <td>{{c.autor}}</td>
                         <td>{{c.articulo}}</td>
                         <td>{{c.titulo}}</td>
-                        <td>{{c.contenido}}</td>
+                        <td>{{c.contenido|safe}}</td>
                         <td>{{c.visibilidad}}</td>
                         <td class="d-grid gap-2 d-md-block">
                             <a href="{% url 'comentarios:detalle' c.id %}" class="btn btn-outline-info">Ver</a>

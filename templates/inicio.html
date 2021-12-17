@@ -14,7 +14,7 @@
                             {% for c in a.etiquetas.all %}
                                 <span class="badge rounded-pill bg-primary">{{c.nombre}}</span>
                             {% endfor %}
-                            <p>{{ a.contenido }}</p>
+                            <p>{{ a.contenido|safe }}</p>
                             <p>Categoria: {{ a.categoria }}</p>
                             <p>Autor: {{ a.autor }}</p>
                             <p>Fecha de Publicación: {{ a.fecha_publicacion }}</p>

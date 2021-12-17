@@ -1,6 +1,8 @@
 from django.db import models
 from apps.usuarios.models import Usuario
 from apps.categorias.models import Categoria
+from django.db import models
+from tinymce import models as tinymce_models
 
 class Etiqueta(models.Model):
     nombre = models.CharField(max_length=255, blank=True, null=True)
@@ -24,7 +26,7 @@ VISIBILIDAD_ARTICULO = (
 
 class Articulo(models.Model):
     titulo = models.CharField(max_length=255, blank=True, null=True)
-    contenido = models.TextField(blank=True, null=True)
+    contenido = tinymce_models.HTMLField()
     estado = models.IntegerField(choices=ESTADOS_ARTICULO, default=1)
     visibilidad = models.IntegerField(choices=VISIBILIDAD_ARTICULO, default=1)
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)

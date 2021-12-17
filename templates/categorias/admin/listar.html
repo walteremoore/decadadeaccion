@@ -24,7 +24,7 @@
                     <tr>
                         <th scope="row">{{c.id}}</th>
                         <td>{{c.nombre}}</td>
-                        <td>{{c.descripcion}}</td>
+                        <td>{{c.descripcion|safe}}</td>
                         <td class="d-grid gap-2 d-md-block">
                             <a href="{% url 'categorias:detalle' c.id %}" class="btn btn-outline-info">Ver</a>
                             <a href="{% url 'categorias:admin_editar' c.id %}" class="btn btn-outline-primary">Editar</a>

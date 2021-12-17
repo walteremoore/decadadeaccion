@@ -45,7 +45,7 @@
                     </div>
                     <div class="media-body">
                     <h4 class="media-heading">Titulo: {{articulo.titulo}}</h4>
-                    <p>{{articulo.contenido}}</p>
+                    <p>{{articulo.contenido|safe}}</p>
                     <p>Categoria: {{articulo.categoria}}</p>
                     <p>Fecha de Publicación: {{articulo.fecha_publicacion}}</p>
                     <p>Etiquetas:   {% for c in articulo.etiquetas.all %}

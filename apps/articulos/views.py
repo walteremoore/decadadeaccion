@@ -51,7 +51,7 @@ class NuevoAdmin(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         f = form.save(commit=False)
-        f.usuario_id = self.request.user.id
+        f.autor_id = self.request.user.id
         return super(NuevoAdmin, self).form_valid(form)
 
 

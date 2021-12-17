@@ -30,7 +30,7 @@
                         <td>{{a.autor}}</td>
                         <td>{{a.categoria}}</td>
                         <td>{{a.titulo}}</td>
-                        <td>{{a.contenido}}</td>
+                        <td>{{a.contenido|safe}}</td>
                         <td>{{a.fecha_publicacion}}</td>
                         <td>{% for c in a.etiquetas.all %}
                                 <span class="badge rounded-pill bg-primary">{{c.nombre}}</span>

@@ -1,10 +1,11 @@
 from django.db import models
 from apps.articulos.models import Articulo
 from apps.usuarios.models import Usuario
+from tinymce import models as tinymce_models
 
 class Comentario(models.Model):
     articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE)
-    contenido = models.TextField(blank=True, null=True)
+    contenido = tinymce_models.HTMLField()
     estado = models.BooleanField(blank=True, null=True, default=True) # True=aprobado, False=baja_logica
     visibilidad = models.BooleanField(blank=True, null=True, default=False) # True=visible, False=pendiente de moderar
     autor = models.ForeignKey(Usuario, on_delete=models.CASCADE)

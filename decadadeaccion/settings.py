@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.categorias',
     'apps.comentarios',
     'apps.core',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
